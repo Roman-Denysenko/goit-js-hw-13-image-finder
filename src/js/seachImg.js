@@ -4,11 +4,14 @@ import ref from './ref.js';
 import PNotify from 'pnotify/dist/es/PNotify';
 import PNotifyStyleMaterial from 'pnotify/dist/es/PNotifyStyleMaterial.js';
 import PNotifyButtons from 'pnotify/dist/es/PNotifyButtons';
+import * as basicLightbox from 'basiclightbox';
+import '../../node_modules/basiclightbox/dist/basicLightbox.min.css';
 
 // Set default styling.
 PNotify.defaults.styling = 'material';
 // This icon setting requires the Material Icons font. (See below.)
 PNotify.defaults.icons = 'material';
+
 
 
 const apiService = new ApiService ();
@@ -29,7 +32,9 @@ function onSearch(e) {
     apiService.clearPage();
     onCreateCard();
     
-}
+    imgModal()
+
+ }
 
 async function onCreateCard() { 
     try {
@@ -42,7 +47,8 @@ async function onCreateCard() {
                             });
         }
         markupCards(markupString)
-     ref.btnLoadMore.classList.remove(`is-hidden`);   
+        ref.btnLoadMore.classList.remove(`is-hidden`);   
+        
     }
     catch {
        
@@ -63,12 +69,35 @@ function clearMarkupGalleryContainer() {
 
 function onCreatesMarkupMore() {
     onCreateCard();
-    scrollTo();
+    imgModal();
+    // scrollTo();
+
+    
 }
 
-function scrollTo() {
-    window.scrollTo({
-     bottom: 100,
-  behavior: 'smooth'
-});
+// function scrollTo() {
+//     const {y} = ref.gallery.lastElementChild.getClientRects() ;
+//      window.scrollTo({
+//          top: 2500 ,
+//          behavior: 'smooth'
+// })
+// }
+
+function imgModal() {
+    setTimeout(() => {
+        const imgRef = document.querySelectorAll('#template');
+
+        imgRef.forEach((e) => {
+             const instance = basicLightbox.create(`<img width="1400" height="900" 
+       src="${e.dataset.src}">`);
+            
+            e.onclick = () => {
+            instance.show()
+        }
+        });
+        
+    }, 1500)
 }
+
+
+
