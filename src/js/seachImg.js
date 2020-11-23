@@ -18,7 +18,6 @@ PNotify.defaults.icons = 'material';
 const apiService = new ApiService();
 
 ref.form.addEventListener(`submit`, onSearch);
-//ref.btnLoadMore.addEventListener(`click`, onCreatesMarkupMore);
 
 function onSearch(e) {
     e.preventDefault();
@@ -48,7 +47,6 @@ async function onCreateCard() {
             });
         }
         markupCards(markupString)
-        //ref.btnLoadMore.classList.remove(`is-hidden`);
 
     }
     catch {
@@ -67,19 +65,6 @@ function clearMarkupGalleryContainer() {
     return ref.gallery.innerHTML = ``;
 }
 
-// function onCreatesMarkupMore() {
-//     onCreateCard();
-//     imgModal();
-// scrollTo();
-//}
-
-// function scrollTo() {
-//     const {y} = ref.gallery.lastElementChild.getClientRects() ;
-//      window.scrollTo({
-//          top: y ,
-//          behavior: 'smooth'
-// })
-// }
 
 function imgModal() {
     setTimeout(() => {
