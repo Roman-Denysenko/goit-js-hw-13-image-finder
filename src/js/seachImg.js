@@ -70,7 +70,7 @@ function clearMarkupGalleryContainer() {
 // function onCreatesMarkupMore() {
 //     onCreateCard();
 //     imgModal();
-    // scrollTo();
+// scrollTo();
 //}
 
 // function scrollTo() {
@@ -102,10 +102,11 @@ const observer = new IntersectionObserver(onEntry, {
 });
 
 
-function onEntry (entries)  {
+function onEntry(entries) {
     entries.forEach((entry) => {
         if (entry.isIntersecting && apiService.searchValue !== ``) {
             onCreateCard();
+            imgModal();
         };
     });
 };
