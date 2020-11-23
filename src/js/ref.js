@@ -3,6 +3,6 @@ export default {
     input:document.querySelector(`.js-input`),
     gallery: document.querySelector(`.gallery`),
     btnSearch: document.querySelector(`[data-action="submit"]`),
-    btnLoadMore: document.querySelector(`[data-action="load-more"]`),
-    imgGallery: document.querySelectorAll(`[data-src=""]`)
+    //btnLoadMore: document.querySelector(`[data-action="load-more"]`),
+    ifBorder: document.querySelector(`.border`),
 }
